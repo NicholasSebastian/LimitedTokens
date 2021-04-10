@@ -1,0 +1,51 @@
+$lightColor: pink;
+$accentColor: purple;
+
+.container {
+  > section {
+    padding: 30px 0;
+
+    &:first-of-type {
+      padding-top: 60px;
+    }
+
+    &:last-of-type {
+      padding-bottom: 60px;
+    }
+  }
+}
+
+.center {
+  height: inherit;
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.top {
+  background: linear-gradient($lightColor, $accentColor);
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  > * {
+    color: #fff;
+  }
+
+  > button {
+    background: none;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 15px 20px;
+    transition: all linear 200ms;
+
+    &:hover {
+      background-color: #fff;
+      color: $accentColor;
+      cursor: pointer;
+    }
+  }
+}
