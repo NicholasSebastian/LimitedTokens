@@ -6,7 +6,7 @@ import Layout from '../components/layout';
 
 const Collection: FC = () => {
   return (
-    <Layout className={styles.body}>
+    <Layout title="Collection" className={styles.body}>
       <section className={styles.trending}>
         <div>
           <h3>Trending</h3>

@@ -32,7 +32,7 @@ const Tutorial: FC = () => {
   }
 
   return (
-    <Layout>
+    <Layout title="Tutorial">
       <section className={styles.top}>
         <h1>{CompanyName}</h1>
         <h3>adalah Platform<br />Jual, Beli, dan Tampilkan<br />(Non-Fungible Token) anda</h3>

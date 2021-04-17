@@ -16,7 +16,7 @@ const Market: FC = () => {
   );
 
   return (
-    <Layout>
+    <Layout title="Market">
       <section className={styles.top}>
         <div>
           <div>
