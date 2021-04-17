@@ -1,0 +1,61 @@
+@import "../variables.scss";
+
+.top {
+  background-image: url("/backdrop.jpeg");
+  background-size: cover;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > h1 {
+    font-size: 42px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2em;
+  }
+
+  > div {
+    margin-top: 20px;
+
+    > button {
+      background-color: $blue;
+      color: #fff;
+      margin: 0 10px;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      
+      &:hover {
+        cursor: pointer;
+        background-color: $blue-hover;
+      }
+    }
+  }
+}
+
+.catalog {
+  background-color: #1d1d1d;
+  padding: 50px 0;
+
+  > div {
+    max-width: $container-width;
+    margin: 0 auto;
+
+    > h4 { 
+      font-size: 28px; 
+      font-weight: 600;
+    }
+
+    > div:first-of-type {
+      margin-top: 10px;
+    }
+
+    > div:last-child {
+      // here
+    }
+  }
+}

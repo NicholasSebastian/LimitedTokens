@@ -1,0 +1,119 @@
+@import "../variables.scss";
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  > main { flex: 1; }
+}
+
+.header {
+  background-color: #0c0c0c;
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+
+  > div {
+    max-width: $container-width;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    > section:first-of-type {
+      display: flex;
+      align-items: center;
+
+      > * { margin-left: 30px; }
+
+      > a { display: flex; }
+
+      > input[type="text"] {
+        background-color: #1d1d1d;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        padding: 8px 16px;
+      }
+
+      > div:last-child {
+        a {
+          color: #ccc;
+          margin-right: 20px;
+          font-size: 15px;
+          font-weight: 500;
+
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    > button {
+      background-color: $blue;
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $blue-hover;
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: #0c0c0c;
+  padding: 50px 0;
+
+  > div {
+    max-width: $container-width;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    > section:first-of-type {
+      > div {
+        display: flex;
+        align-items: center;
+
+        > h3 {
+          color: #fff;
+          font-size: 22px;
+          margin-left: 10px;
+        }
+      }
+
+      > span { 
+        color: #fff;
+        font-size: 12px; 
+      }
+    }
+
+    > section:not(:first-of-type) {
+      > h5 {
+        color: #fff;
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+
+      > a, > span {
+        color: #ccc;
+        font-size: 14px;
+        display: block;
+        margin-top: 5px;
+      }
+
+      > a:hover {
+        color: #fff;
+      }
+    }
+  }
+}

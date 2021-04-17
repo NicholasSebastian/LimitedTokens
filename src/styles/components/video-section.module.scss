@@ -1,0 +1,46 @@
+@import '../variables.scss';
+
+.section {
+  padding: 60px 0;
+
+  > div {
+    max-width: $container-width;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 50px;
+
+    > div:last-of-type {
+      display: flex;
+      align-items: center;
+
+      > div {
+        > h2 {
+          font-size: 32px;
+          font-weight: 600;
+        }
+  
+        > p { 
+          font-size: 16px; 
+          line-height: 1.8em;
+        }
+  
+        > button {
+          background-color: $blue;
+          color: #fff;
+          padding: 8px 32px;
+          border: none;
+          border-radius: 20px;
+          font-size: 14px;
+          font-weight: 500;
+          margin-top: 10px;
+          
+          &:hover {
+            cursor: pointer;
+            background-color: $blue-hover;
+          }
+        }
+      }
+    }
+  }
+}

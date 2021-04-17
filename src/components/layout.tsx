@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Head from 'next/head';
-import styles from '../styles/Layout.module.scss';
+import styles from '../styles/components/layout.module.scss';
 
 import Header from './header';
 import Footer from './footer';
@@ -11,7 +11,7 @@ interface ILayoutProps {
 }
 
 const Layout: FC<ILayoutProps> = props => {
-  const { title, className, children } = props;
+  const { title, children, className } = props;
 
   const suffix = title && `: ${title}`;
   const seo = (
@@ -24,12 +24,11 @@ const Layout: FC<ILayoutProps> = props => {
     </Head>
   );
 
-  const classNames = className ? `${styles.main} ${className}` : styles.main;
   return (
     <div className={styles.container}>
       {seo}
       <Header />
-      <main className={classNames}>
+      <main className={className}>
         {children}
       </main>
       <Footer />

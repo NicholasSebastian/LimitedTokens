@@ -1,5 +1,5 @@
 import { FC, ComponentType } from 'react';
-import '../styles/globals.scss';
+import '../styles/Global.scss';
 
 interface IAppProps {
   Component: ComponentType

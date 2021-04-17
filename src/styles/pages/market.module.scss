@@ -1,0 +1,51 @@
+@import "../variables.scss";
+
+.top {
+  background-color: #000;
+  
+  > div {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    > div:first-child {
+      > span:first-of-type {
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      > input[type="text"] {
+        background-color: #1d1d1d;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        padding: 8px 16px;
+        margin-left: 12px;
+      }
+
+      > div:last-child {
+        margin-top: 16px;
+      }
+    }
+
+    > select:last-of-type {
+      background-color: $blue;
+      border: none;
+      border-radius: 20px;
+      padding: 4px 12px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $blue-hover;
+      }
+    }
+  }
+}
+
+.content {
+  background-color: #1d1d1d;
+  // here
+}

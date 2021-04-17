@@ -1,0 +1,46 @@
+.tags {
+  > button {
+    background: none;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-right: 10px;
+
+    &:hover {
+      cursor: pointer;
+      color: #000 !important;
+    }
+
+    &:nth-child(1) {
+      $local-color: red;
+      color: $local-color;
+      border: 1px solid $local-color;
+
+      &:hover { background-color: $local-color; }
+    }
+
+    &:nth-child(2) {
+      $local-color: lime;
+      color: $local-color;
+      border: 1px solid $local-color;
+      
+      &:hover { background-color: $local-color; }
+    }
+
+    &:nth-child(3) {
+      $local-color: magenta;
+      color: $local-color;
+      border: 1px solid $local-color;
+      
+      &:hover { background-color: $local-color; }
+    }
+
+    &:nth-child(4) {
+      $local-color: orange;
+      color: $local-color;
+      border: 1px solid $local-color;
+      
+      &:hover { background-color: $local-color; }
+    }
+  }
+}

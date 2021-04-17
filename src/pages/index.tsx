@@ -1,26 +1,30 @@
 import { FC } from 'react';
-import styles from '../styles/Home.module.scss';
+import Link from 'next/link';
+
+import styles from '../styles/pages/home.module.scss';
 import Layout from '../components/layout';
+import VideoSection from '../components/video-section';
+import Tags from '../components/tags';
 
 const Home: FC = () => {
   return (
-    <Layout className={styles.container}>
-      <div className={styles.top}>
-        <h1>Limited Tokens</h1>
-        <div>The first NFT marketplace in Indonesia</div>
-        <button>Browse the Market</button>
-      </div>
-      <section className={styles.center}>
-        <h2>Featured Drop</h2>
-        <div>here</div>
+    <Layout>
+      <section className={styles.top}>
+        <h1>Platform NFT Pertama<br/>di Indonesia</h1>
+        <div>
+          <Link href="/market"><button>Periksa Pasar</button></Link>
+          <Link href="/tutorial"><button>Apa itu NFT?</button></Link>
+        </div>
       </section>
-      <section className={styles.center}>
-        <h2>Most Popular</h2>
-        <div>here</div>
-      </section>
-      <section className={styles.center}>
-        <h2>Latest Releases</h2>
-        <div>here</div>
+      <VideoSection />
+      <section className={styles.catalog}>
+        <div>
+          <h4>Explore!</h4>
+          <Tags />
+          <div>
+            {/* dynamically generated content here */}  
+          </div>
+        </div>
       </section>
     </Layout>
   )

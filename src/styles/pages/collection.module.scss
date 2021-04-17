@@ -1,0 +1,62 @@
+@import '../variables.scss';
+
+.body {
+  background-color: #1d1d1d;
+  
+  > section {
+    max-width: $container-width;
+    margin: 0 auto;
+  }
+}
+
+.trending {
+  > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+
+    > h3 {
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    > div {
+      margin-top: 10px;
+
+      > button {
+        background: none;
+        color: $blue;
+        border: 1px solid $blue;
+        border-radius: 20px;
+        padding: 4px 0;
+        width: 100px;
+        margin: 0 5px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $blue;
+          color: #000;
+        }
+      }
+    }
+  }
+
+  > div:last-child {
+    // here
+  }
+}
+
+.featured {
+  padding-top: 50px;
+  
+  > h3 {
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  > div:last-child {
+    // here
+  }
+}
