@@ -4,7 +4,12 @@ import Image from 'next/image';
 
 import styles from '../styles/components/layout.module.scss';
 
-const Header: FC = () => {
+interface IProps {
+  loginOrRegister: () => void
+}
+
+const Header: FC<IProps> = props => {
+  const { loginOrRegister } = props;
   return (
     <header className={styles.header}>
       <div className='container'>
@@ -17,7 +22,7 @@ const Header: FC = () => {
             <Link href="/tutorial"><a>Tutorial</a></Link>
           </div>
         </section>
-        <button>Daftar / Masuk</button>
+        <button onClick={loginOrRegister}>Daftar / Masuk</button>
       </div>
     </header>
   );

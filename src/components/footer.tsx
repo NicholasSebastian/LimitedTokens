@@ -29,7 +29,7 @@ const Footer: FC = () => {
         <section>
           <h5>Contact</h5>
           <span>WA: {WhatsApp}</span>
-          <span>Email: {Email}</span>
+          <a href={`mailto:${Email}`}>Email: {Email}</a>
         </section>
       </div>
     </footer>
