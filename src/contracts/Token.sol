@@ -14,6 +14,6 @@ contract Token is ERC721 {
   function mint(string memory _token) public {
     tokens.push(_token);
     uint _id = tokens.length;
-    _mint(msg.sender, _id);
+    _safeMint(msg.sender, _id);
   }
 }

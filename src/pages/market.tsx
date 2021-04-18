@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import Link from 'next/link';
 
 import styles from '../styles/pages/market.module.scss';
@@ -6,6 +6,10 @@ import Layout from '../components/layout';
 import Tags from '../components/tags';
 
 const Market: FC = () => {
+  useEffect(() =>  {
+    // fetch data here.
+  }, []);
+
   const Sorter = (
     <select>
       <option disabled selected>Sortir</option>

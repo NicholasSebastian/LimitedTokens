@@ -49,7 +49,7 @@ const Login: FC<IViewProps> = props => {
       <a onClick={changeMode}>Belum punya akun? Daftar disini</a>
       <input type='text' placeholder='Email' 
         value={email} onChange={e => setEmail(e.target.value)} />
-      <input type='text' placeholder='Kata Sandi' 
+      <input type='password' placeholder='Kata Sandi' 
         value={password} onChange={e => setPassword(e.target.value)} />
       <button onClick={handleSubmit}>Masuk</button>
       <a>Lupa Kata Sandi?</a>
@@ -78,7 +78,7 @@ const Signup: FC<IViewProps> = props => {
       <a onClick={changeMode}>Sudah punya akun? Masuk disini</a>
       <input type='text' placeholder='Email' 
         value={email} onChange={e => setEmail(e.target.value)} />
-      <input type='text' placeholder='Kata Sandi' 
+      <input type='password' placeholder='Kata Sandi' 
         value={password} onChange={e => setPassword(e.target.value)} />
       <hr />
       <p>

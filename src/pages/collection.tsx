@@ -1,10 +1,14 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import Link from 'next/link';
 
 import styles from '../styles/pages/collection.module.scss';
 import Layout from '../components/layout';
 
 const Collection: FC = () => {
+  useEffect(() =>  {
+    // fetch data here.
+  }, []);
+
   return (
     <Layout title="Collection" className={styles.body}>
       <section className={styles.trending}>

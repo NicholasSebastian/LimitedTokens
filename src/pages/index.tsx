@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import Link from 'next/link';
 
 import styles from '../styles/pages/home.module.scss';
@@ -7,6 +7,10 @@ import VideoSection from '../components/video-section';
 import Tags from '../components/tags';
 
 const Home: FC = () => {
+  useEffect(() =>  {
+    // fetch data here.
+  }, []);
+
   return (
     <Layout>
       <section className={styles.top}>
