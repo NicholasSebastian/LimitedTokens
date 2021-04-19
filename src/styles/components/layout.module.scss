@@ -52,7 +52,7 @@
       }
     }
 
-    > button {
+    > button.login {
       background-color: $blue;
       color: #fff;
       padding: 8px 16px;
@@ -65,6 +65,72 @@
       &:hover {
         cursor: pointer;
         background-color: $blue-hover;
+      }
+    }
+
+    > div {
+      position: relative;
+
+      &:hover {
+        > button > div {
+          transform: scale(1.05);
+        }
+
+        > div:last-child {
+          display: block;
+        }
+      }
+
+      > button:first-child {
+        background-color: #1d1d1d !important;
+        color: #fff;
+        border: none;
+        border-radius: 100px;
+        font-size: 12px;
+        font-weight: 500;
+        padding: 0;
+        display: flex;
+        align-items: center;
+  
+        &:hover {
+          cursor: pointer;
+          background-color: $blue !important;
+        }
+  
+        > a {
+          font-weight: 500;
+          margin-left: 16px;
+          margin-right: 8px;
+        }
+  
+        > div:last-child { 
+          border-radius: 100%; 
+          transition: all 200ms;
+        }
+      }
+
+      > div:last-child {
+        background-color: #1d1d1d;
+        padding: 8px 8px;
+        border-radius: 10px;
+        width: 120px;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        display: none;
+
+        > button {
+          background-color: transparent;
+          border: none;
+          border-radius: 10px;
+          width: 100%;
+          padding: 6px 0;
+
+          &:hover {
+            cursor: pointer;
+            background-color: $blue;
+          }
+        }
       }
     }
   }

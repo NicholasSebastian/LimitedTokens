@@ -17,6 +17,7 @@ export { getServerSideProps };
 export default Profile;
 
 const getServerSideProps: GetServerSideProps = async (context) => {
+  const { profileid } = context.params;
   // here
   return { props: {} };
 }

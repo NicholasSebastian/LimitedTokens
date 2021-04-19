@@ -1,10 +1,11 @@
 import { FC, Fragment, useState } from 'react';
 import Head from 'next/head';
+
 import styles from '../styles/components/layout.module.scss';
 
 import Header from './header';
 import Footer from './footer';
-import Overlay from './signup-login';
+import Overlay from './auth/overlay';
 
 interface ILayoutProps {
   title?: string

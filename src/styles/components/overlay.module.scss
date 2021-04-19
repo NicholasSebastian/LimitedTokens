@@ -7,6 +7,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 20;
 
   > div {
     background-color: #0c0c0c;
@@ -65,7 +66,10 @@
     }
   }
 
-  hr { width: 100%; }
+  hr { 
+    width: 100%;
+    border: 1px solid #1d1d1d;
+  }
 
   > input[type='text'], > input[type='password'] {
     background-color: #fff;
@@ -86,6 +90,17 @@
     }
   }
 
+  > div.error {
+    background-color: #9c2b2e;
+    color: #fff;
+    border: 1px solid #e84e4f;
+    border-radius: 5px;
+    width: 100%;
+    padding: 5px 0;
+    font-size: 14px;
+    text-align: center;
+  }
+
   > button {
     background-color: $blue;
     color: #fff;
@@ -103,5 +118,28 @@
 
   > *:nth-child(n+3) {
     margin-top: 15px;
+  }
+
+  > div:last-child {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+
+    > button {
+      background-color: $blue;
+      color: #fff;
+      padding: 8px 0;
+      border: none;
+      border-radius: 4px;
+
+      &:not(:first-child) {
+        margin-top: 10px;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: $blue-hover;
+      }
+    }
   }
 }

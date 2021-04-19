@@ -70,6 +70,8 @@ export { getServerSideProps };
 export default Item;
 
 const getServerSideProps: GetServerSideProps<ITokenData> = async (context) => {
+  const { itemid } = context.params;
+
   const daysBefore = (days: number) => {
     const now = new Date();
     const then = new Date(now.setDate(now.getDate() - days));

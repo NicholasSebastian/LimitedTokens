@@ -1,14 +1,17 @@
 import { FC, ComponentType } from 'react';
+import { Provider } from 'next-auth/client';
 import '../styles/Global.scss';
 
 interface IAppProps {
   Component: ComponentType
-  pageProps: object
+  pageProps: any
 }
 
 const App: FC<IAppProps> = ({ Component, pageProps }) => {
   return (
-    <Component {...pageProps} />
+    <Provider session={pageProps.session}>
+      <Component {...pageProps} />
+    </Provider>
   );
 }
 
