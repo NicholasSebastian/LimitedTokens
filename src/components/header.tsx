@@ -14,19 +14,21 @@ interface IProfileProps {
   session: Session
 }
 
+function handleSignOut() {
+  signOut({ redirect: false });
+}
+
 const ProfileButton: FC<IProfileProps> = props => {
   const { session } = props;
 
-  function handleSignOut() {
-    signOut({ redirect: false });
-  }
-
   return (
     <div className={styles.profile}>
-      <button>
-        <Link href="/"><a>{session.user.name}</a></Link>
-        <Image src="/placeholder.jpg" width={40} height={40} />
-      </button>
+      <Link href="/">
+        <button>
+          <span>{session.user.name}</span>
+          <Image src="/placeholder.jpg" width={40} height={40} />
+        </button>
+      </Link>
       <div>
         <Link href="/"><button>Profile</button></Link>
         <Link href="/settings"><button>Settings</button></Link>
@@ -40,6 +42,21 @@ const Header: FC<IProps> = props => {
   const { loginOrRegister } = props;
   const [session, loading] = useSession();
 
+  let component: JSX.Element;
+  if (loading) {
+    component = <div>Loading</div>
+  }
+  else {
+    if (session) {
+      component = <ProfileButton session={session} />
+    }
+    else {
+      component = (
+        <button className={styles.login} onClick={loginOrRegister}>Daftar / Masuk</button>
+      );
+    }
+  }
+
   return (
     <header className={styles.header}>
       <div className='container'>
@@ -52,11 +69,7 @@ const Header: FC<IProps> = props => {
             <Link href="/tutorial"><a>Tutorial</a></Link>
           </div>
         </section>
-        {session ? (
-          <ProfileButton session={session} />
-        ) : (
-          <button className={styles.login} onClick={loginOrRegister}>Daftar / Masuk</button>
-        )}
+        {component}
       </div>
     </header>
   );

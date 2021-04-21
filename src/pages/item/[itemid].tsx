@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import styles from '../../styles/pages/item.module.scss';
 import Layout from '../../components/layout';
-import commaSeparator from '../../utils/commaSeparator';
+import commaSeparator from '../../lib/format-number';
 
 const PROFILE_PIC_SIZE = 60;
 

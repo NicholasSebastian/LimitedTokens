@@ -29,8 +29,7 @@ const Overlay: FC<IProps> = props => {
 
   return (
     <div className={styles.blackout}
-      style={{ display: open ? 'block' : 'none' }}
-      onClick={closeOverlay}>
+      style={{ display: open ? 'block' : 'none' }}>
       <div onClick={e => e.stopPropagation()}>
         <button onClick={closeOverlay}>X</button>
         {view}

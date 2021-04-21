@@ -71,7 +71,10 @@
     border: 1px solid #1d1d1d;
   }
 
-  > input[type='text'], > input[type='password'] {
+  > input[type='text'], 
+  > input[type='password'], 
+  > input[type='email'], 
+  > input[type='tel'] {
     background-color: #fff;
     color: #000;
     border: none;
