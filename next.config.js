@@ -5,6 +5,6 @@ module.exports = {
     includePaths: [path.join(__dirname, 'styles')]
   },
   images: {
-    domains: ['liquipedia.net'] // temporary
+    domains: ['platform-lookaside.fbsbx.com', 'lh3.googleusercontent.com']
   }
 }

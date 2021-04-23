@@ -1,5 +1,5 @@
-import { FC, useState, useEffect, KeyboardEventHandler } from 'react';
-import { signIn, getCsrfToken } from 'next-auth/client';
+import { FC, useState, useEffect } from 'react';
+import { signIn } from 'next-auth/client';
 
 import styles from '../../styles/components/overlay.module.scss';
 import { IViewProps } from './overlay';
@@ -15,18 +15,11 @@ function handleGoogle() {
 const Login: FC<IViewProps> = props => {
   const { open, changeMode, closeOverlay } = props;
 
-  const [csrfToken, setCsrfToken] = useState<string>(null);
   const [error, setError] = useState<string>(null);
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   
-  useEffect(initializeToken, []);
   useEffect(reset, [open]);
-
-  function initializeToken() {
-    getCsrfToken()
-    .then(token => setCsrfToken(token));
-  }
 
   function reset() {
     setError(null);
@@ -50,11 +43,10 @@ const Login: FC<IViewProps> = props => {
     else setError("Email dan Kata Sandi harus terisi.");
   }
 
-  if (csrfToken) return (
+  return (
     <form className={styles.content}>
       <h2>Masuk</h2>
       <a onClick={changeMode}>Belum punya akun? Daftar disini</a>
-      <input name='csrfToken' type='hidden' defaultValue={csrfToken} />
       {error && <div className={styles.error}>{error}</div>}
       <input type='text' placeholder='Nama Pengguna' 
         value={username} onChange={e => setUsername(e.target.value)} />
@@ -69,7 +61,6 @@ const Login: FC<IViewProps> = props => {
       </div>
     </form>
   );
-  return <div>Loading</div>;
 }
 
 export default Login;

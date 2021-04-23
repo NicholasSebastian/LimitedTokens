@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 const Error404: FC = () => {
   return (
-    <div>Page not found.</div>
+    <div>404 - Page not found.</div>
   );
 }
 

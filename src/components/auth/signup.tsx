@@ -1,12 +1,16 @@
 import { FC, useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { signIn } from 'next-auth/client';
 
 import styles from '../../styles/components/overlay.module.scss';
 import postJSON from '../../lib/post-json';
+import { UserDetails } from '../../pages/api/auth/signup';
 import { IViewProps } from './overlay';
 
 const Signup: FC<IViewProps> = props => {
   const { open, changeMode, closeOverlay } = props;
+  const router = useRouter();
 
   const [error, setError] = useState<string>(null);
   const [name, setName] = useState<string>('');
@@ -14,7 +18,6 @@ const Signup: FC<IViewProps> = props => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [phoneNumber, setPhoneNumber] = useState<string>('');
-  const [socialMedia, setSocialMedia] = useState<string>('');
   const [agree, setAgree] = useState<boolean>(false);
 
   useEffect(reset, [open]);
@@ -25,8 +28,18 @@ const Signup: FC<IViewProps> = props => {
     setEmail('');
     setPassword('');
     setPhoneNumber('');
-    setSocialMedia('');
     setAgree(false);
+  }
+
+  async function handleSignIn() {
+    const result = await signIn('credentials', { username, password, redirect: false });
+    if (result.error) {
+      setError(`${result.status}: ${result.error}`);
+    }
+    else if (result.ok) {
+      closeOverlay();
+      router.push(`/profile/${username}`);
+    }
   }
 
   async function handleSubmit() {
@@ -34,10 +47,13 @@ const Signup: FC<IViewProps> = props => {
     const noBlank = values.every(value => value.length > 0);
     if (noBlank) {
       if (agree) {
-        const newUser = {
-          // here
+        const newUser: UserDetails = {
+          _id: username,
+          credentials: { password },
+          name, email, phoneNumber
         };
-        const result = await postJSON('/api/auth/signup', newUser);
+        await postJSON('/api/auth/signup', newUser);
+        handleSignIn();
       }
       else setError("Anda harus menyetujui syarat dan ketentuan.");
     }
@@ -64,8 +80,6 @@ const Signup: FC<IViewProps> = props => {
       </p>
       <input type='tel' placeholder='Nomor Telepon' 
         value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} />
-      <input type='text' placeholder='Social Media'
-        value={socialMedia} onChange={e => setSocialMedia(e.target.value)} />
       <label>
         <input type='checkbox' checked={agree} onChange={e => setAgree(e.target.checked)} />
         Dengan mencentang kotak ini, anda menyetujui{' '}

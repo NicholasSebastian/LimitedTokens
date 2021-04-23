@@ -63,12 +63,12 @@ const Tutorial: FC = () => {
         <div>
           <h2>Berkolaborasi Dengan</h2>
           <div>
-            <Person name="Orang A" src="/placeholder.jpg" />
-            <Person name="Orang B" src="/placeholder.jpg" />
-            <Person name="Orang C" src="/placeholder.jpg" />
-            <Person name="Orang D" src="/placeholder.jpg" />
-            <Person name="Orang E" src="/placeholder.jpg" />
-            <Person name="Orang F" src="/placeholder.jpg" />
+            <Person name="Orang A" src="/placeholder.png" />
+            <Person name="Orang B" src="/placeholder.png" />
+            <Person name="Orang C" src="/placeholder.png" />
+            <Person name="Orang D" src="/placeholder.png" />
+            <Person name="Orang E" src="/placeholder.png" />
+            <Person name="Orang F" src="/placeholder.png" />
           </div>
         </div>
       </section>

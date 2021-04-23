@@ -1,4 +1,4 @@
-import { FC, Fragment } from 'react';
+import { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Session } from 'next-auth';
@@ -14,23 +14,24 @@ interface IProfileProps {
   session: Session
 }
 
-function handleSignOut() {
-  signOut({ redirect: false });
-}
-
 const ProfileButton: FC<IProfileProps> = props => {
   const { session } = props;
+  const profileHref = `/profile/${session.user.name}`;
+
+  function handleSignOut() {
+    signOut({ callbackUrl: '/' });
+  }
 
   return (
     <div className={styles.profile}>
-      <Link href="/">
+      <Link href={profileHref}>
         <button>
           <span>{session.user.name}</span>
-          <Image src="/placeholder.jpg" width={40} height={40} />
+          <Image src={session.user.image || "/placeholder.png"} width={40} height={40} />
         </button>
       </Link>
       <div>
-        <Link href="/"><button>Profile</button></Link>
+        <Link href={profileHref}><button>Profile</button></Link>
         <Link href="/settings"><button>Settings</button></Link>
         <button onClick={handleSignOut}>Sign Out</button>
       </div>

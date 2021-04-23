@@ -33,8 +33,7 @@ async function accountIdFromFacebook (profile: any) {
   const projection = { _id: true };
   const account = await queryAccounts(query, projection);
   if (account) {
-    const newToken = { accountId: account._id };
-    return newToken;
+    return account._id;
   }
   else {
     const newUser = {
@@ -46,9 +45,8 @@ async function accountIdFromFacebook (profile: any) {
         facebook: profile.id
       }
     };
-    const newAccountId = createNewUser(newUser);
-    const newToken = { accountId: newAccountId };
-    return newToken;
+    const newAccountId = await createNewUser(newUser);
+    return newAccountId;
   }
 }
 
@@ -57,8 +55,7 @@ async function accountIdFromGoogle (profile: any) {
   const projection = { _id: true };
   const account = await queryAccounts(query, projection);
   if (account) {
-    const newToken = { accountId: account._id };
-    return newToken;
+    return account._id;
   }
   else {
     const newUser = {
@@ -71,8 +68,7 @@ async function accountIdFromGoogle (profile: any) {
       }
     };
     const newAccountId = await createNewUser(newUser);
-    const newToken = { accountId: newAccountId };
-    return newToken;
+    return newAccountId;
   }
 }
 
@@ -106,10 +102,10 @@ const callbacks: CallbacksOptions = {
       }
       else if (account.type === 'oauth') {
         if (account.provider === 'facebook') {
-          token = await accountIdFromFacebook(profile);
+          token = { accountId: await accountIdFromFacebook(profile) };
         }
         else if (account.provider === 'google') {
-          token = await accountIdFromGoogle(profile);
+          token = { accountId: await accountIdFromGoogle(profile) };
         }
       }
     }
