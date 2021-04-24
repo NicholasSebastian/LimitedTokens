@@ -39,12 +39,75 @@
           background-color: $blue;
           color: #000;
         }
+
+        &.active {
+          background-color: $blue;
+          color: #000;
+        }
       }
     }
   }
 
   > div:last-child {
-    // here
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 30px 50px minmax(0, 1fr);
+  column-gap: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  transition: all 200ms;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $blue;
+
+    > span:first-child {
+      color: #fff;
+    }
+
+    > div:nth-child(2) {
+      border-color: #fff;
+    }
+
+    > div:last-child > span:last-child {
+      color: #fff;
+    }
+  }
+
+  > span:first-child {
+    color: #aaa;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+
+  > div:nth-child(2) {
+    border: 1px solid transparent;
+    border-radius: 100%;
+  }
+
+  > div:last-child {
+    > * {
+      display: block;
+    }
+
+    > span:first-child {
+      font-weight: 500;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    > span:last-child {
+      color: $blue;
+      font-size: 14px;
+    }
   }
 }
 

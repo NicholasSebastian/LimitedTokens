@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSession } from 'next-auth/client';
 import fetch from 'isomorphic-unfetch';
 
 import styles from '../../styles/pages/profile.module.scss';
@@ -13,6 +14,8 @@ const PROFILEPIC_SIZE = 120;
 const QRCODE_SIZE = 160;
 
 const Profile: FC = () => {
+  const [session] = useSession();
+
   const router = useRouter();
   const { profileid } = router.query;
 
@@ -44,7 +47,7 @@ const Profile: FC = () => {
 
   if (!profileData) return <Loading />
   return (
-    <Layout className={styles.body}>
+    <Layout title={profileData._id} className={styles.body}>
       <div className={styles.banner} />
       <section className={styles.profile}>
         <div><img src={qrCode} /></div>
@@ -59,6 +62,11 @@ const Profile: FC = () => {
           <h5>Artis / Kolektor</h5>
           <span>0 Karya</span>
           <span>0 Koleksi</span>
+          {session?.user.name === profileid && (
+            <Link href="/settings">
+              <button>Edit Profile</button>
+            </Link>
+          )}
         </div>
       </section>
       <section className={styles.content}>

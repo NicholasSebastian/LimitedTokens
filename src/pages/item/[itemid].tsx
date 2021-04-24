@@ -15,7 +15,7 @@ const Item: FC<ITokenData> = props => {
   } = props;
 
   return (
-    <Layout className={styles.body}>
+    <Layout title={tokenName} className={styles.body}>
       <div>
         <div>
           <Image src={file} alt="Image" layout='fill' objectFit='contain' />

@@ -25,23 +25,23 @@
   > div {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     
     &:nth-of-type(1) {
+      justify-content: flex-end;
       align-items: flex-end;
     }
 
     &:nth-of-type(2) {
+      justify-content: flex-start;
       align-items: center;
-      position: relative;
+      margin-top: -60px;
 
       > div:first-child {
-        position: absolute !important;
-        top: -60px;
         border-radius: 100%;
       }
 
       > h4 {
+        margin-top: 16px;
         font-size: 24px;
         font-weight: 600;
       }
@@ -53,11 +53,28 @@
     }
 
     &:nth-of-type(3) {
+      justify-content: flex-end;
       align-items: flex-start;
 
       > h5 {
         font-size: 20px;
         font-weight: 500;
+      }
+
+      > button:last-child {
+        background: none;
+        color: $blue;
+        border: 1px solid $blue;
+        border-radius: 5px;
+        font-size: 14px;
+        padding: 4px 16px;
+        margin-top: 20px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: $blue;
+          color: #fff;
+        }
       }
     }
   }

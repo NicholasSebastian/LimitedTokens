@@ -1,0 +1,40 @@
+@import "../variables.scss";
+
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 50px 0;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  column-gap: 50px;
+
+  > aside {
+
+    > button {
+      background-color: transparent;
+      border: none;
+      border-right: 2px solid #1d1d1d;
+      width: 100%;
+      padding: 10px 0;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $blue;
+      }
+
+      &.active {
+        border-right: 4px solid $blue;
+      }
+    }
+
+    > hr {
+      border: none;
+      border-top: 1px solid #1d1d1d;
+      margin: 10px;
+    }
+  }
+
+  > main {
+    // here
+  }
+}

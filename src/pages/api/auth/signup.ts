@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import connect from '../../../lib/database';
 
 // TODO: implement a way for users to link new credentials to existing an account.
+// Warn if credentials is already linked to an account.
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const accountId = await createNewUser(req.body);
