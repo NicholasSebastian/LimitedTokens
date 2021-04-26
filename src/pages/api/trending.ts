@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import connect from '../../../lib/database';
+import connect from '../../lib/database';
 
 // TODO: sort by popularity / number of pieces sold / worth of pieces owned.
 

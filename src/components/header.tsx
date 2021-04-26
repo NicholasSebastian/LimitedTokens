@@ -32,7 +32,7 @@ const ProfileButton: FC<IProfileProps> = props => {
       </Link>
       <div>
         <Link href={profileHref}><button>Profil</button></Link>
-        <Link href="/settings"><button>Edit Profil</button></Link>
+        <Link href={`${profileHref}/settings`}><button>Edit Profil</button></Link>
         <button onClick={handleSignOut}>Keluar</button>
       </div>
     </div>

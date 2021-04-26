@@ -5,7 +5,7 @@ import fetch from 'isomorphic-unfetch';
 
 import styles from '../styles/pages/collection.module.scss';
 import Layout from '../components/layout';
-import { IProfile } from './api/profile/index';
+import { IProfile } from './api/trending';
 
 interface IProfileProps {
   ranking: number
@@ -33,7 +33,7 @@ const Collection: FC = () => {
 
   const [profiles, setProfiles] = useState<Array<IProfile>>(null);
   useEffect(() =>  {
-    fetch(`/api/profile?trend=${mode ? 'collector'  : 'artist'}`)
+    fetch(`/api/trending?trend=${mode ? 'collector'  : 'artist'}`)
     .then(data => data.json())
     .then(profiles => setProfiles(profiles));
   }, [mode]);

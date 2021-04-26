@@ -50,6 +50,10 @@
         font-size: 14px;
         margin: 0;
       }
+
+      > span {
+        color: #aaa;
+      }
     }
 
     &:nth-of-type(3) {

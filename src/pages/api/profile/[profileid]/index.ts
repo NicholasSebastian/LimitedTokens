@@ -1,11 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import connect from '../../../lib/database';
+import connect from '../../../../lib/database';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { profileid } = req.query;
   try {
     const query = { _id: profileid };
-    const projection = { _id: true, name: true, image: true, description: true };
+    const projection = { 
+      _id: true, name: true, image: true, 
+      description: true, socialMedia: true 
+    };
 
     const { database } = await connect();
     const collection = database.collection('accounts');
@@ -20,6 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 export interface IProfile {
   _id: string
   name: string
-  image: any
-  description: string
+  image?: any
+  description?: string
+  socialMedia?: string
 }

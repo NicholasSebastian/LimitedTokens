@@ -5,17 +5,16 @@ import Image from 'next/image';
 import { useSession } from 'next-auth/client';
 import fetch from 'isomorphic-unfetch';
 
-import styles from '../../styles/pages/profile.module.scss';
-import Layout from '../../components/layout';
-import Loading from '../../components/loading';
-import { IProfile } from '../api/profile/[profileid]';
+import styles from '../../../styles/pages/profile.module.scss';
+import Layout from '../../../components/layout';
+import Loading from '../../../components/loading';
+import { IProfile } from '../../api/profile/[profileid]/index';
 
 const PROFILEPIC_SIZE = 120;
 const QRCODE_SIZE = 160;
 
 const Profile: FC = () => {
   const [session] = useSession();
-
   const router = useRouter();
   const { profileid } = router.query;
 
@@ -55,15 +54,16 @@ const Profile: FC = () => {
           <Image src={profileData.image || '/placeholder.png'} 
             width={PROFILEPIC_SIZE} height={PROFILEPIC_SIZE} />
           <h4>{profileData.name}</h4>
-          <span>{profileData._id}</span>
+          <span>@{profileData._id}</span>
           {profileData.description && <p>{profileData.description}</p>}
+          {profileData.socialMedia && <span>{profileData.socialMedia}</span>}
         </div>
         <div>
           <h5>Artis / Kolektor</h5>
           <span>0 Karya</span>
           <span>0 Koleksi</span>
           {session?.user.name === profileid && (
-            <Link href="/settings">
+            <Link href={`/profile/${profileid}/settings`}>
               <button>Edit Profile</button>
             </Link>
           )}

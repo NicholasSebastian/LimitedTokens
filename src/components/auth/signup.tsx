@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { signIn } from 'next-auth/client';
 
 import styles from '../../styles/components/overlay.module.scss';
-import postJSON from '../../lib/post-json';
+import post from '../../lib/post-json';
 import { UserDetails } from '../../pages/api/auth/signup';
 import { IViewProps } from './overlay';
 
@@ -52,8 +52,11 @@ const Signup: FC<IViewProps> = props => {
           credentials: { password },
           name, email, phoneNumber
         };
-        await postJSON('/api/auth/signup', newUser);
-        handleSignIn();
+        const response = await post('/api/auth/signup', newUser);
+        if (response.ok) {
+          handleSignIn();
+        }
+        else setError("Error terjadi.");
       }
       else setError("Anda harus menyetujui syarat dan ketentuan.");
     }
