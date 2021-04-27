@@ -10,12 +10,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const query = { _id: profileid };
     const projection = { 
       _id: true, name: true, description: true, email: true, image: true,
-      socialMedia: true, shippingAddress: true, phoneNumber: true
+      socialMedia: true, shippingAddress: true, phoneNumber: true,
+      credentials: { password: true, facebook: true, google: true }
     };
     try {
       const { database } = await connect();
       const accounts = database.collection("accounts");
+      
       const accountData: IAccount = await accounts.findOne(query, { projection });
+      accountData.credentials.password = !!accountData.credentials.password;
+      accountData.credentials.facebook = !!accountData.credentials.facebook;
+      accountData.credentials.google = !!accountData.credentials.google;
+
       res.status(200).json(accountData);
     }
     catch (e) {
@@ -36,4 +42,9 @@ export interface IAccount {
   socialMedia: string
   shippingAddress: any
   phoneNumber: string
+  credentials: {
+    password: boolean
+    facebook: boolean
+    google: boolean
+  }
 }

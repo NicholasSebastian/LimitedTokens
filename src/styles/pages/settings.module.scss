@@ -60,7 +60,8 @@
     margin-bottom: 20px;
     font-size: 14px;
 
-    > input[type="text"], > input[type="number"], > textarea {
+    > input[type="text"], > input[type="number"],
+    > input[type="password"], > textarea {
       background-color: #1d1d1d;
       border: none;
       border-radius: 3px;

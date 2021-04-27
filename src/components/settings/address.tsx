@@ -1,17 +1,15 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useSession } from 'next-auth/client';
 
 import post from '../../lib/post-json';
+import withSession from '../../components/withSession';
 import { IPageProps } from '../../pages/profile/[profileid]/settings';
 import { IAddress } from '../../pages/api/profile/[profileid]/edit/address';
 import styles from '../../styles/pages/settings.module.scss';
 
 const Address: FC<IPageProps> = props => {
-  const { shippingAddress } = props.data;
-
-  const [session, loading] = useSession();
-  useEffect(checkSession, [loading]);
+  const { data, showPrompt } = props;
+  const { shippingAddress } = data;
 
   const router = useRouter();
   const { profileid } = router.query;
@@ -23,18 +21,13 @@ const Address: FC<IPageProps> = props => {
   const [city, setCity] = useState<string>(shippingAddress?.city);
   const [postalCode, setPostalCode] = useState<number>(shippingAddress?.postalCode);
 
-  function checkSession() {
-    if (!session) {
-      router.push('/404');
-    }
-  }
-
   async function saveAddress() {
     setSubmitted(true);
     const newAddress: IAddress = { address, city, postalCode };
     const response = await post(`/api/profile/${profileid}/edit/address`, newAddress);
     if (response.ok) {
-      router.push(`/profile/${profileid}`);
+      showPrompt('Alamat berhasil disetel.');
+      setSubmitted(false);
     }
     else {
       setError("Masalah terjadi.");
@@ -68,4 +61,4 @@ const Address: FC<IPageProps> = props => {
   );
 }
 
-export default Address;
+export default withSession(Address);
